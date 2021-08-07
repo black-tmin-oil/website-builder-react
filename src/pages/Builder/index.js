@@ -4,7 +4,7 @@ import headerBlock from './components/blocks/Header'
 import imgBlock from './components/blocks/Img'
 import textBlock from './components/blocks/Text'
 
-//тупо рендерн всех компонентов и блоков
+//тупо рендерн всех компонентов и блоков и состояния здесь диспатч не нужен
 export default function Builder() {
     return (
         <>

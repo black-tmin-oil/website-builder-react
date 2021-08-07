@@ -1,17 +1,12 @@
-// //просто мапинг состояния(обьект) из стора
-// import { mapState } from 'vuex'
+//просто мапинг состояния(обьект) из стора
+import { useSelector } from 'react-redux'
 
-// export default {
-//   name: 'Grid',
-//   computed: {
-//     ...mapState('builder', {
-//       options: state => state.current.options
-//     }),
-//     calcStyle () {
-//       return {
-//         display: this.options.grid ? 'block' : 'none',
-//         width: this.options.width + 'px',
-//         height: this.options.height + 'px'
-//       }
-//     }
-//   }
+export default function Grid() {
+  const options = useSelector(state => state.builder.current.options)
+  
+  const calcStyle = () => {
+    display: options.grid ? 'block' : 'none',
+    width: options.width + 'px',
+    height: options.height + 'px'
+  }
+}
