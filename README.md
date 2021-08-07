@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+В приложении используется Vuex в качестве централизованного хранилища данных для всех компонентов. Для обеспечения персистентности данных в рамках одного браузера используется localStorage. Данные, находящиеся во Vuex, автоматически сохраняются в localStorage с помощью плагина vuex-persistedstate.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+В приложение доступно как создание новых сайтов, так и их сохранение в историю с возможностью просмотра и редактирования ранее созданных сайтов. Максимально возможное количество сохранённых сайтов ограниченно только размером localStorage.
 
-## Available Scripts
+Архитектурно каждый прототип создаваемого сайта представляет собой объект, содержащий набор полей с мета информацией (id, название сайта, время создания и т.д.), объект с текущими настройками конструктора и массив со списком использованных блоков. Использование массива для хранения информации о блоках, позволяет гарантировать при сохранении порядок их следования (order).
 
-In the project directory, you can run:
+Каждый блок в свою очередь, также представляет собой объект с мета информацией и вложенным массивом со списком атрибутов (список будет отличаться для различных блоков), который необходим для рендеринга компонента. Использование списка атрибутов позволяет унифицировать создание блоков, вынося всю уникальную логику в отдельные компоненты-блоки.
 
-### `yarn start`
+Подобная иерархическая структура позволяет гибко масштабировать приложение, легко добавлять новые сущности (например, пользователь, домен и т.д.) и хорошо подходит для использования в средних и больших командах, так как позволяет разделить зоны ответственности разных разработчиков.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Инлайн редактирование текста в блоках выполнено без использования библиотек на нативном Vue. Для отображения на странице и возможности персистентного хранения все изображения кодируются в Base64.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Для реализации Drag-and-drop используется библиотека Vue.Draggable, которая позволяет гибко управлять поведением блоков на странице, в том числе предоставляю возможность создавать сложные вложенные структуры (в этом приложение вложенные структуры не реализованы).
 
-### `yarn test`
+Для возможности изменения положения блока с управляющими элементами на странице конструктора использована библиотека VueDraggableResizable 2. Данную библиотеку потенциально возможно использовать совместно с Vue.Draggable для реализации сложных сценариев управления пользовательскими блоками.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Для ускорения процесса разработки использован HTML-шаблонизатор Pug, CSS препроцессор Sass и набор компонентов UI Buefy.
 
-### `yarn build`
+Работа приложения протестирована в браузерах Google Chrome (Blink), Mozilla Firefox (Gecko), Microsoft Edge (EdgeHTML) и Apple Safari (WebKit).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    warning Приложение не поддерживает работу в Internet Explorer. warning

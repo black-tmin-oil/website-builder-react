@@ -1,1 +1,1 @@
-DeleteButton.js
+//мапит акшин DELETE_BLOCK

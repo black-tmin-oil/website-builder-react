@@ -1,40 +1,37 @@
 import React from 'react';
-import {Container, Form, Row, Col, Button} from 'react-bootstrap';
+//import {Container, Form, Row, Col, Button} from 'react-bootstrap';
 
-//здесь импорт mapDispathtoProps шоб перевать кнопке по клику создать сайт
-//onclick="CREATE_NEW_SITE(siteName)"   это акшин в который передается пейлоад
-//import { connect } from "react-redux";
-// import { createSiteAction } from "../actions";
-
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     createSiteAction: siteName => dispatch(createSiteAction(siteName))
-//   };
-// }
-//акшин просто обьект который принимает тип и пейлоад 
-//а редюсеры уже все обрабатываютизходяиз типа акшина
-// function createSiteAction(payload) {
-// 	return { type: "ADD_ARTICLE", payload }
-
-// }
+import { useSelector, useDispatch } from 'react-redux'
+import { createNewSite } from '../store/builderSlice'
 
 export default function Start() {
-    return (
-        <>
-         <Container fluid>
-		    <Form>
-			  <Row className="mb-3">
-			    <Form.Group as={Col} controlId="form">
-			      <Form.Label>Create New Site</Form.Label>
-			      <Form.Control type="text" placeholder="Enter site name" />
-			    </Form.Group>
-			  </Row>
+    const dispatch = useDispatch()
 
-			  <Button variant="primary" type="submit">
-			    Submit new site
-			  </Button>
-			</Form>
-		 </Container>
+    return (
+        <>    
+		    <div>
+			  <button onClick={() => {
+			  	dispatch(createNewSite('newSite'))
+			  }}
+			  >
+			  create site
+			  </button>  
+			</div>
         </>
     )
 }
+
+//здесь главная проблема в том что не получается отпрвлять полььзовательский ввод т.е
+//имя сайта в стор
+//по большому счету остался красивый дизайн(заморочиться с бутстрап)
+//роутеры тип кто куда раскидать
+//интегрировать пресистент(локал сторедж) с стором т.е найти библиотеку для реакт
+//ДнД библиотека для реакт
+//пва воркеры
+
+// <Form onSubmit={onFormSubmit}>
+//             <Form.Control type="text" name='mama'/>
+// 	        <Button type="submit">
+// 	        Submit
+// 	      </Button>
+// 	    </Form>
