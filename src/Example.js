@@ -1,20 +1,25 @@
-import React from 'react'
+import {React, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { saveBlockState, createNewSite } from './store/builderSlice'
+import { createNewSite, saveBlockState } from './store/builderSlice'
+import EasyEdit from 'react-easy-edit';
 
-export default function Example() {
-	//let s = useSelector(state => state.builder.current)
-	const dispatch = useDispatch()
+import DeleteButton from "./pages/Builder/components/DeleteButton"
 
-	return (
-		<div>
-		  <button onClick={() => {
-		  	dispatch(createNewSite('newSite'))
-		  }}
-		  >
-		  create site
-		  </button>  
-		</div>
-
-	)
+export default function Example (props) {
+  const siteName = useSelector(state => state.builder.current.siteName)
+  const dispatch = useDispatch()
+  const id = props.id
+  const toStore = (value) => {dispatch(saveBlockState(id, value))}
+  const save = (value) => {dispatch(createNewSite(value))}
+  return (
+    <>
+    <EasyEdit
+      type="text"
+      onBlur={toStore}
+      // attributes={{ name: "awesome-input", id: 1}}
+    />
+    <DeleteButton id={props.id} />
+    <textarea onBlur={save}></textarea>
+    </>
+  );
 }

@@ -1,15 +1,16 @@
-import React from "react";
-import './App.scss';
-//import Example from "./Example"
-import TopBar from "./components/TopBar"
-import Start from "./pages/Start"
-function App() {
+import React from 'react'
+import './App.scss'
+// import {Col, Container, Row} from 'react-bootstrap';
+
+import DeleteButton from './pages/Builder/components/DeleteButton'
+import BlocksIndex from './BlocksIndex'
+function App () {
   return (
     <>
-      <TopBar />
-      <Start />
+      {/* <TopBar /> */}
+      <BlocksIndex />
     </>
-  );
+  )
 }
 
-export default App;
+export default App
