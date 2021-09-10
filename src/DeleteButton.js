@@ -1,15 +1,15 @@
-// мапит акшин DELETE_BLOCK
-// кнопка принимает айди блока как пропс ищет по айди блок
-import react from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteBlock } from '../../../store/builderSlice'
+import { deleteBlock } from './store/builderSlice'
 
 export default function DeleteButton (props) {
+  const blockId = props.id
   const dispatch = useDispatch()
-  //const blockId = props.id
+  
+  const deleteBloc = () => dispatch(deleteBlock(blockId))
+
   return (
     <div>
-      <button onClick={() => dispatch(deleteBlock(props))} name/>
+      <button onClick={deleteBloc}>delete block</button>
     </div>
   )
 }

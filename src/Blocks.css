@@ -1,0 +1,22 @@
+.blocksContainer {
+  border: 1px solid color-alt-opacity;
+  box-shadow: 5px 5px 10px 0 rgba(0,0,0,.1);
+  padding: 15px 30px;
+  border-radius: 6px;
+  min-width: 310px;
+  background: white;
+  max-height: 750px;
+
+}
+
+.blockPreview {
+    margin-bottom: 25px;
+    cursor: wait;
+}
+
+.block-preview-title {
+  font-weight: 500;
+  padding: 5px;
+  cursor: pointer;
+
+}

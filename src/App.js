@@ -3,12 +3,12 @@ import './App.scss'
 // import {Col, Container, Row} from 'react-bootstrap';
 
 import DeleteButton from './pages/Builder/components/DeleteButton'
-import BlocksIndex from './BlocksIndex'
+import BuilderIndex from './BuilderIndex'
 function App () {
   return (
     <>
       {/* <TopBar /> */}
-      <BlocksIndex />
+      <BuilderIndex />
     </>
   )
 }

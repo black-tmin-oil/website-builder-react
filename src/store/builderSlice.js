@@ -11,11 +11,12 @@ export const builderSlice = createSlice({
 	saveBlock: (state, action) => {
 		const Block = state.current.blocks
 		Block.push(action.payload)
-		console.log(Block)
 	},
     saveBlockState: (state, action) => {
-      const currentBlock = state.current.blocks.find(e => e.id === action.id)
-      currentBlock.attributes = action.attributes.slice()
+	  const currentBlock = state.current.blocks.find(e => e.id === action.payload.id)
+	  currentBlock.attributes = Object.assign({}, action.payload.attributes);
+      console.log(currentBlock)
+      //currentBlock.attributes = action.payload.attributes.slice()
     },
     deleteBlock: (state, id) => {
 		state.current.blocks = state.current.blocks.filter(e => e.id !== id).slice()

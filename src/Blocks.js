@@ -1,48 +1,43 @@
 import {React, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { createNewSite, saveBlock } from './store/builderSlice'
+import './Blocks.css'
 
-function BlockProto(props) {
-  const dispatch = useDispatch()
-  const toStore = () => {dispatch(saveBlock(props))}
-  const o = () => console.log('hey:', props)
-  return(
-    <>
-    <button onClick={toStore} key={props.type}>{props.name}</button>
-    </>
-  )
-
-}
 export default function Blocks () {
   const dispatch = useDispatch()
-  const toStore = (listAvailableBlocks) => {dispatch(saveBlock(listAvailableBlocks))}
   const save = () => {dispatch(createNewSite("Newsite"))}
   const [listAvailableBlocks, setListAvailableBlocks] = useState([
     {
-      id: 1,
+      id: null,
       type: 'header',
       name: 'Заголовок'
     },
     {
-      id: 2,
+      id: null,
       type: 'text',
       name: 'Текст'
     },
     {
-      id: 3,
+      id: null,
       type: 'img',
       name: 'Изображение'
     }])
-  
+
+    const addUniqueId = (b) => {
+      setListAvailableBlocks(listAvailableBlocks.map(e => {
+        e.id = Math.random().toString(36).substring(7)
+        return Object.assign({}, e)
+      }))
+      dispatch(saveBlock(b))
+    }
+
   return (
       <>
-      <div className="blocksContainer" style={{background:'blue'}}>
+      <div className="blocksContainer">
         {listAvailableBlocks.map(b => (
-            <BlockProto
-              id = {b.id}
-              type = {b.type}
-              name = {b.name}
-            />
+          <div className='blockPreview' key={b.type} onClick={()=> addUniqueId(b)}>
+            <p className='block-preview-title'>{b.name}</p>
+          </div>
           ))}
       </div>
       {/* //эта кнопка будет в компоненте Start.js там будет висеть акшин создания сайта и получение 
@@ -51,6 +46,24 @@ export default function Blocks () {
       </>
   );
 }
+
+
+
+// const dispatch = useDispatch()
+// const dispatchToStore = () => {dispatch(saveBlock(b))}
+
+// const getImg = (name) => require(`@/assets/blocks-preview/${name}.svg`)
+
+// // getImg (name) {
+// //   return require(`@/assets/blocks-preview/${name}.svg`)
+// // },
+// <div className="blocksContainer" style={{background:'blue'}}>
+//         {listAvailableBlocks.map(b => (
+//           <div className='blockPreview' key={b.type} onClick={dispatchToStore}>
+//             <p className='block-preview-title'>{b.name}</p>
+//             <img src={getImg(b.type)} alt={b.type}></img>
+//           </div>
+//   </div>
 
 //конечно ут ебя ошибка потому что action saveblokstate используется только в миксинах
   //которые пользуют блоки у которых этот самый attributes уже имеется поэтому 
