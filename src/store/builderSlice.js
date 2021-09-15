@@ -15,14 +15,11 @@ export const builderSlice = createSlice({
     saveBlockState: (state, action) => {
 	  const currentBlock = state.current.blocks.find(e => e.id === action.payload.id)
 	  currentBlock.attributes = Object.assign({}, action.payload.attributes);
-      console.log(currentBlock)
-      //currentBlock.attributes = action.payload.attributes.slice()
     },
-    deleteBlock: (state, id) => {
-		state.current.blocks = state.current.blocks.filter(e => e.id !== id).slice()
-    },
+    deleteBlock: (state, action) => {
+		state.current.blocks = state.current.blocks.filter(e => e.id !== action.payload).slice()
+	},
     saveProject: (state) => {
-		    // удаляем из истории старую версию расчёта и сохраняем новую
 		    state.history = state.history.filter(e => e.id !== state.current.id)
 
 		    const copy = Object.assign({}, state.current)

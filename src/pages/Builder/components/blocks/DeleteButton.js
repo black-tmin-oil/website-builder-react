@@ -1,5 +1,9 @@
 import { useDispatch } from 'react-redux'
-import { deleteBlock } from './store/builderSlice'
+import { deleteBlock } from '../../../../store/builderSlice'
+
+import Tooltip from '@material-ui/core/Tooltip';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
 
 export default function DeleteButton (props) {
   const blockId = props.id
@@ -7,9 +11,18 @@ export default function DeleteButton (props) {
   
   const deleteBloc = () => dispatch(deleteBlock(blockId))
 
+  // return (
+  //   <div>
+  //     <button onClick={deleteBloc}>delete block</button>
+  //   </div>
+  // )
   return (
-    <div>
-      <button onClick={deleteBloc}>delete block</button>
+    <div className="deleteContainer">
+      <Tooltip title="Delete" placement="right">
+        <IconButton aria-label="delete">
+          <DeleteIcon onClick={() => dispatch(deleteBlock(blockId))}/>
+        </IconButton>
+      </Tooltip>
     </div>
   )
 }

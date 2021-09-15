@@ -1,7 +1,7 @@
 // import saveToStore from './saveToStore.mixin'
 //import DeleteButton from './DeleteButton'
 import { useDispatch } from 'react-redux'
-import { saveBlockState } from './store/builderSlice'
+import { saveBlockState } from '../../../../store/builderSlice'
 import {useState} from 'react'
 import DeleteButton from './DeleteButton'
 
@@ -52,3 +52,4 @@ export default function Img (props) {
 //   }
 //   console.log(state) // do something after state has updated
 // }, [state])
+

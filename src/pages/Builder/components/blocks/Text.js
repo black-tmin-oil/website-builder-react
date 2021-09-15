@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react"
 import { useDispatch } from 'react-redux'
-import { saveBlockState} from './store/builderSlice'
+import { saveBlockState} from '../../../../store/builderSlice'
+import DeleteButton from './DeleteButton'
 
 export default function Text(props) {
     const dispatch = useDispatch()
@@ -69,11 +70,10 @@ export default function Text(props) {
                 )}
             </p> */}
             <p onClick={save}>dispath to store</p>
-        <p>{attributes[0].value}</p>
+        {/* <p>{attributes[0].value}</p> */}
             <p><textarea ref={textareaRef} onBlur={toggleEdit}></textarea></p>
-        <h1>{props.name}</h1>
-        {/* //css таким образлм шоб он превратился в значек мусорки на компоненте
-        <div className="deleteButton"><Button /></div> */}
+        {/* <h1>{props.name}</h1> */}
+        <DeleteButton id={id} />
         </div>
     )
     
@@ -91,19 +91,6 @@ export default function Text(props) {
 //     }
 // }
 
-//2) сверстать все компоненты
-//3) привязка id компонента к id blockPrototype передать сюда return <Component name={b.name} id={b.id}/>;
-//4) а для этого нужно создать функцию генерации id в blocks.js
-//5) id нужно для того чтобы в store saveBlockState: (state, action) => {
-    //   const currentBlock = state.current.blocks.find(e => e.id === action.id)
-    //   currentBlock.attributes = action.attributes.slice()
-    // }, id нужно для удаления блока пихаем в deleteButton компонент где тригерится акшин
-    //тут мы по айди находим BlockPrototype и пихаем ему атрибуты из компонента блок(да так)
-
-//6) history массив т.е action saveSite() сохраняет в localstorage а также отрисовывается в Start.js
-//7) добавить роутеры там легко
-//8) юзер зареган  ? сохранить в firebase  : coxp в localstorage
-//9) выгрузить на github pages(использовать тот скрипт для роутеров) + travisCI
 
 // import ToggleEdit from './ToggleEdit'
 // import SaveToStore from './SaveToStore'
