@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import './Grid.css'
 
-export default function Grid () {
+export default function Setka () {
   // const [gridStyle, setGridStyle] = useState({
   //   display: options.grid ? 'block' : 'none',
   //   width: options.width + 'px',

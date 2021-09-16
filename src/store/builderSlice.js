@@ -33,7 +33,7 @@ export const builderSlice = createSlice({
 		    //   type: 'is-success',
 		    //   duration: 3000
 		    // })
-    },
+	},
     createNewSite: (state, siteName) => {
 		    const id = Math.random().toString(36).substring(7)
 		    const template = {
@@ -48,18 +48,18 @@ export const builderSlice = createSlice({
 		      blocks: []
 		    }
 
-		    state.current = Object.assign({}, template)
+			state.current = Object.assign({}, template)
     },
     openHistoryProject: (state, id) => {
-		    const findInHistory = state.history.find(e => e.id === id)
+		    const findInHistory = state.history.find(e => e.id === id.payload)
 		    state.current = Object.assign({}, findInHistory)
     },
     deleteHistoryProject: (state, id) => {
-		    state.history = state.history.filter(e => e.id !== id).slice()
+		    state.history = state.history.filter(e => e.id !== id.payload).slice()
     }
 
   }
 })
 
-export const { saveBlock, saveBlockState, createNewSite, deleteBlock } = builderSlice.actions
+export const { saveBlock, saveBlockState, createNewSite, deleteBlock, saveProject, openHistoryProject, deleteHistoryProject } = builderSlice.actions
 export default builderSlice.reducer

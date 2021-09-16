@@ -122,3 +122,13 @@ export default function Text(props) {
 
 // export default someAsync(dataConfig)(WrappedComponent)
 
+
+// так реализуется toggleedit и savetostore HOC
+// import { withTheme } from '@material-ui/core/styles';
+
+// function DeepChildRaw(props) {
+//   return <span>{`spacing ${props.theme.spacing}`}</span>;
+// }
+
+// const DeepChild = withTheme(DeepChildRaw);
+

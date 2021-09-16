@@ -1,32 +1,26 @@
 import React from 'react'
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import Dashboard from "./pages/Builder/components/"
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Builder from "./pages/Builder/components/"
+import Home from "./pages/Home"
+import Error from "./pages/Error"
 import TopBar from './components/TopBar'
 function App () {
   return (
     <>
       <TopBar />
-      <Dashboard />
-      {/* <BrowserRouter>
-        <nav>
-          <ul>
-            <li><Link to="/Home">Start</Link></li>
-            <li><Link to="/Builder">Build</Link></li>
-            <li><Link to="/Dash">dash</Link></li>
-          </ul>
-        </nav>
+      <BrowserRouter>
         <Switch>
           <Route path="/Home">
-            <Start />
+            <Home />
           </Route>
           <Route path="/Builder">
-            <BuilderIndex />
+            <Builder />
           </Route>
-          <Route path="/Dashboard">
-            <Dashboard />
+          <Route>
+            <Error />
           </Route>
         </Switch>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </>
   )
 }
