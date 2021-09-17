@@ -21,7 +21,7 @@ export default function Text(props) {
               value: e.target.value    // overwrite the value of the field to update
             }
         }));
-        //dispatch(saveBlockState({id: id, attributes: attributes[0]}))
+        dispatch(saveBlockState({id: id, attributes: attributes[0]}))
         
     }
     // const toggleEdit = (object) => {
@@ -33,7 +33,7 @@ export default function Text(props) {
     //         dispatch(saveBlockState({id: id, attributes: attributes}))
     //     }
     // }
-    const textareaRef = useRef(null)
+    // const textareaRef = useRef(null)
 
     // const toggleEdit = (object) => {
     //     //object.edit = !object.edit
@@ -70,9 +70,7 @@ export default function Text(props) {
                 )}
             </p> */}
             <p onClick={save}>dispath to store</p>
-        {/* <p>{attributes[0].value}</p> */}
-            <p><textarea ref={textareaRef} onBlur={toggleEdit}></textarea></p>
-        {/* <h1>{props.name}</h1> */}
+            <p><textarea onBlur={toggleEdit}></textarea></p>
         <DeleteButton id={id} />
         </div>
     )

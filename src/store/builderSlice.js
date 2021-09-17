@@ -21,18 +21,11 @@ export const builderSlice = createSlice({
 	},
     saveProject: (state) => {
 		    state.history = state.history.filter(e => e.id !== state.current.id)
-
 		    const copy = Object.assign({}, state.current)
 		    copy.saveTime = Date.now()
-
-		    state.history.push(copy)
-
-		    // Toast.open({
-		    //   message: 'Проект успешно сохранён в историю',
-		    //   position: 'is-bottom',
-		    //   type: 'is-success',
-		    //   duration: 3000
-		    // })
+			state.history.push(copy)
+			
+			window.alert('site succesfuly saved')
 	},
     createNewSite: (state, siteName) => {
 		    const id = Math.random().toString(36).substring(7)
@@ -63,3 +56,19 @@ export const builderSlice = createSlice({
 
 export const { saveBlock, saveBlockState, createNewSite, deleteBlock, saveProject, openHistoryProject, deleteHistoryProject } = builderSlice.actions
 export default builderSlice.reducer
+
+
+//two way data binding
+//Components should not directly manipulate the state of other components. 
+//If you need to have shared data, 
+//bring the state to a parent component and pass callbacks to the children that can change the state.
+
+//two way data binding in vuex with getters setter, they dont change store directly
+
+
+
+//In this case, it may be excessive. You can forgo Redux and do this via React state as usual—find a common parent and let it hold the state.
+//Or you can use Redux like you described, and fire an action on every keypress. 
+//To be honest I don't think it's a big deal—for example, 
+//this is exactly how Redux Form works.
+// You may have performance issues with giant forms, so always profile for your use case first.

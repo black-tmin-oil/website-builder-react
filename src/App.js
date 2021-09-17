@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Builder from "./pages/Builder/components/"
 import Home from "./pages/Home"
 import Error from "./pages/Error"
@@ -10,7 +10,10 @@ function App () {
       <TopBar />
       <BrowserRouter>
         <Switch>
-          <Route path="/Home">
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+          <Route path="/home">
             <Home />
           </Route>
           <Route path="/Builder">

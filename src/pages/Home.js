@@ -14,7 +14,8 @@ import {
   Link, 
   Typography, 
   Grid, 
-  Paper} from '@material-ui/core';
+  Paper,
+  Divider} from '@material-ui/core';
 
 //assets
 import empty from'./../assets/empty.webp';
@@ -66,10 +67,10 @@ export default function Home() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-
-
           <Grid container spacing={3}>
+            
             <Grid item xs={12} md={4} lg={3}>
+            <h2>Start site</h2>
               <Paper className={fixedHeightPaper}>
                 <p>Enter ur site name</p>
                 <input onChange={e => setSiteName(e.target.value)}></input>
@@ -89,7 +90,7 @@ export default function Home() {
 
             {/* поместить в отдельный грид для блоков хистори */}
             <Grid item xs={12} md={4} lg={3} justify = "center">
-
+              <h2>History</h2>
               {history.length ? history.map(site => (
                 <Paper className={fixedHeightPaper} key={site.id}>
                   <h2>{site.siteName}</h2>
@@ -103,6 +104,8 @@ export default function Home() {
                 >
                   open
                 </Button>
+                <Divider />
+                <Divider />
                 <Button
                   variant="contained"
                   color="primary"
