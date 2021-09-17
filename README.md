@@ -12,30 +12,22 @@
 # React.js Website Builder
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
-:ru: created by BlackTminOil
+:black_heart: created by BlackTminOil
  
-The application is created using [REACT.JS](https://vuejs.org/)
-and is the simplest site constructor, with conceptions
-[SPA](https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0 % BD% D0% B8% D1% 87% D0% BD% D0% BE% D0% B5_% D0% BF% D1% 80% D0% B8% D0% BB% D0% BE% D0% B6% D0% B5 % D0% BD% D0% B8% D0% B5)
+The application is created using [React.js](https://vuejs.org/)
+and is the simplest site constructor, with conceptions of
+[SPA](https://wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0)
 and [PWA](https://web.dev/progressive-web-appsis/) applications. 
 
 :tada: [Demo](https://github.io/website-builder-react/)
 
-:triangular_ruler: [Общие принципы работы приложения](#architecture)
-
-:hammer: [Список использованных технологий и инструментов](#tools)
-
-:wrench: [Локальный запуск проекта](#dev)
-
-:rocket: [Деплой на Github Pages](#deploy)
-
 ## <a name="architecture"></a>General principles of the application work
 
-The application uses [Redux] (https://vuex.vuejs.org/) as a centralized data warehouse
+The application uses [Redux](https://vuex.vuejs.org/) as a centralized data warehouse
 For all components. To ensure the persistence of data within one browser used
-[Localstorage] (https://developer.mozilla.org/ru/docs/web/api/window/localstorage).
+[Localstorage](https://developer.mozilla.org/ru/docs/web/api/window/localstorage).
 Data in Redux is automatically saved in localstorage using
-[Redux-presist] (https://github.com/robinvdvleten/vuex-persistedstate).
+[Redux-presist](https://github.com/robinvdvleten/vuex-persistedstate).
 
 ФИЧИ:
   creating new sites
@@ -44,7 +36,7 @@ Data in Redux is automatically saved in localstorage using
 The application is available as creating new sites and their presistence in history.
 With the ability to view and edit previously created sites.
 The maximum possible number of saved sites is limited by the size of LocalStorage.
-<a href="https://storyset.com/web">Web illustrations by Storyset</a>
+
 Architecturally, each prototype of the site (witch store in redux) is an object containing a set of fields
 with meta information (ID, site name, creation time, etc.), an object with the current settings of the designer and
 An array with a list of used blocks. Using an array for storing block information allows
@@ -70,7 +62,7 @@ In [Base64] (https://ru.wikipedia.org/wiki/base64).
 - [Redux Toolkit](https://Reactx.Reactjs.org/) +
 [redux-persist](https://github.com/robinvdvleuten/Reactx-persistedstate) +
 - [Materila UI](https://pugjs.org/api/getting-started.html)
-- Graphic [StorySet](https://storyset.com/web">)
+- Graphic [StorySet.com](https://storyset.com/web)
 - [Github Pages](https://pages.github.com/)
 - [Travis CI](https://travis-ci.org/)
 
