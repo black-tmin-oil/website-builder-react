@@ -11,16 +11,13 @@
 
 # React.js Website Builder
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
-[![Build Status](https://travis-ci.com/mikhail-shpakov/fetch-github-profiles-with-vue-rx.svg?branch=master)](https://travis-ci.com/mikhail-shpakov/fetch-github-profiles-with-vue-rx)
-[![Maintainability](https://api.codeclimate.com/v1/badges/92255094c568fe9f1e23/maintainability)](https://codeclimate.com/github/mikhail-shpakov/website-builder-vuejs/maintainability)
-[![DeepScan grade](https://deepscan.io/api/teams/8555/projects/13367/branches/222664/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8555&pid=13367&bid=222664)
 
 :ru: created by BlackTminOil
  
-The application is created using [REACT.JS] (https://vuejs.org/)
+The application is created using [REACT.JS](https://vuejs.org/)
 and is the simplest site constructor, with conceptions
-[SPA] (https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0 % BD% D0% B8% D1% 87% D0% BD% D0% BE% D0% B5_% D0% BF% D1% 80% D0% B8% D0% BB% D0% BE% D0% B6% D0% B5 % D0% BD% D0% B8% D0% B5)
-and [PWA] (https://web.dev/progressive-web-appsis/) applications. 
+[SPA](https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0 % BD% D0% B8% D1% 87% D0% BD% D0% BE% D0% B5_% D0% BF% D1% 80% D0% B8% D0% BB% D0% BE% D0% B6% D0% B5 % D0% BD% D0% B8% D0% B5)
+and [PWA](https://web.dev/progressive-web-appsis/) applications. 
 
 :tada: [Demo](https://github.io/website-builder-react/)
 
