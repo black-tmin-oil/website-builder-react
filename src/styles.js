@@ -1,15 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
+import pink from "@material-ui/core/colors/pink";
+import blue from "@material-ui/core/colors/blue";
 
 const drawerWidth = 240;
 
-//useSryle in other file
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  // toolbar: {
-  //   paddingRight: 24, // keep right padding when drawer closed
-  // },
+
   toolbar: theme.mixins.toolbar,
 
   toolbarIcon: {
@@ -21,8 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     position: 'absolute',
-    zIndex: theme.zIndex.drawer + 1,
-    // alignItems: 'center',
+    zIndex: theme.zIndex.drawer + 3,
     transition: theme.transitions.create(['width', 'margin'],{
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -57,11 +55,7 @@ const useStyles = makeStyles((theme) => ({
   drawerContainer: {
     overflow: 'auto',
   },
-
-  // appBar: {
-  //   position: 'relative',
-  //   zIndex: theme.zIndex.drawer + 1,
-  // },
+  
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
@@ -80,6 +74,47 @@ const useStyles = makeStyles((theme) => ({
   },
   fixedHeight: {
     height: 240,
+  },
+//--------------------
+  icon: {
+    margin: theme.spacing.unit * 2
+  },
+  // iconHover: {
+  //   margin: theme.spacing.unit * 2,
+  //   "&:hover": {
+  //     color: red[800]
+  //   }
+  // },
+  cardHeader: {
+    textalign: "center",
+    align: "center",
+    backgroundColor: "white"
+  },
+  input: {
+    display: "none"
+  },
+  titleImg: {
+    // color: blue[800],
+    fontWeight: "bold",
+    fontFamily: "Montserrat",
+    align: "center"
+  },
+  button: {
+    // color: blue[900],
+    margin: 10,
+  },
+  deleteButton: {
+    right: 10,
+    top: 10,
+    position: 'absolute'
+  },
+  secondaryButton: {
+    color: "gray",
+    margin: 10
+  },
+  typography: {
+    margin: theme.spacing.unit * 2,
+    backgroundColor: "default"
   },
 }));
 

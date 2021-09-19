@@ -5,20 +5,18 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 
+
+import { useStyles } from './../../../../styles'
 export default function DeleteButton (props) {
+  const classes = useStyles()
   const blockId = props.id
   const dispatch = useDispatch()
   
   const deleteBloc = () => dispatch(deleteBlock(blockId))
 
-  // return (
-  //   <div>
-  //     <button onClick={deleteBloc}>delete block</button>
-  //   </div>
-  // )
   return (
-    <div className="deleteContainer">
-      <Tooltip title="Delete" placement="right">
+    <div>
+      <Tooltip title="Delete" placement="left">
         <IconButton aria-label="delete">
           <DeleteIcon onClick={() => dispatch(deleteBlock(blockId))}/>
         </IconButton>

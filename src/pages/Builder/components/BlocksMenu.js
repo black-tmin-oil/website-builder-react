@@ -13,10 +13,13 @@ import {
   Toolbar,
   Button }from '@material-ui/core';
 
-import Snackbar from '@material-ui/core/Snackbar';
 import MailIcon from '@material-ui/icons/Mail';
 import SaveIcon from '@material-ui/icons/Save';
 import GitHubIcon from '@material-ui/icons/GitHub';
+
+import ImageIcon from '@material-ui/icons/Image';
+import TextFieldsIcon from '@material-ui/icons/TextFields';
+// import SegmentIcon from '@material-ui/icons/Segment';
 
 export default function BlocksMenu () {
   const classes = useStyles()
@@ -55,14 +58,13 @@ export default function BlocksMenu () {
 
   const blocks = (
     <div>
-      {/* <Toolbar /> */}
       <Toolbar><GitHubIcon /><p>v. 0.0.1</p></Toolbar>
       <Divider />
       <div className={classes.drawerContainer} />
       <List>
         {listAvailableBlocks.map((b) => (
           <ListItem button key={b.type}>
-            <ListItemIcon><MailIcon /></ListItemIcon>
+            <ListItemIcon><ImageIcon /></ListItemIcon>
             <ListItemText primary={b.name} onClick={()=> addUniqueId(b)}/>
           </ListItem>
         ))}

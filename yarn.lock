@@ -9471,7 +9471,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -9737,10 +9737,23 @@ react-easy-edit@^1.15.0:
   resolved "https://registry.yarnpkg.com/react-easy-edit/-/react-easy-edit-1.15.0.tgz#ca01c71952ee5b005bdd33ecfc33ef1cbbdea99b"
   integrity sha512-9RQ19RE0+jxHSY6tPk1vAkYKwBPmzpcESqYS9Zv7zAapQzlUxaJiCAb58eAHf4KbQ3/V5JsWGC/vHcmpwBIfog==
 
+react-edit-inline@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-edit-inline/-/react-edit-inline-1.0.8.tgz#d144670b5217b5adc6c5bcb6976fc6b257f09b72"
+  integrity sha1-0URnC1IXta3Gxby2l2/Gslfwm3I=
+
 react-error-overlay@^6.0.9:
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.9.tgz#3c743010c9359608c375ecd6bc76f35d93995b0a"
   integrity sha512-nQTTcUu+ATDbrSD1BZHr5kgSD4oF8OFjxun8uAaL8RwPBacGBNPf/yAuVVdx17N8XNzRDMrZ9XcKZHCjPW+9ew==
+
+react-inline-editing@^1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/react-inline-editing/-/react-inline-editing-1.0.10.tgz#0e2b89c03f8506e8d02feccf66a658dd809a8dfd"
+  integrity sha1-DiuJwD+FBujQL+zPZqZY3YCajf0=
+  dependencies:
+    prop-types "^15.6.0"
+    react "^16.2.0"
 
 react-is@^16.13.1, react-is@^16.3.2, react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.13.1"
@@ -9896,6 +9909,15 @@ react-transition-group@^4.4.0, react-transition-group@^4.4.1:
     "@babel/runtime" "^7.5.5"
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
+    prop-types "^15.6.2"
+
+react@^16.2.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
     prop-types "^15.6.2"
 
 react@^17.0.2:

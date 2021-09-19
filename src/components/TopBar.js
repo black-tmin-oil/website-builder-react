@@ -10,7 +10,7 @@ export default function TopBar () {
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
-        <Typography component="h1" variant="h6" color="inherit" className={classes.title}noWrap>
+        <Typography component="h1" variant="h6" color="inherit" className={classes.title} noWrap>
           Site Builder
         </Typography>
         <IconButton

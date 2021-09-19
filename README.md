@@ -29,7 +29,7 @@ For all components. To ensure the persistence of data within one browser used
 Data in Redux is automatically saved in localstorage using
 [Redux-presist](https://github.com/robinvdvleten/vuex-persistedstate).
 
-ФИЧИ:
+ФИЧИ: основная магия происходит в сторе редак поэтому можно установить расширение и понаблюдать
   creating new sites
   save sites
   view/edit previosly created sites
@@ -53,7 +53,7 @@ Easily add new entities (for example, user, domain, etc.)
 
 Inline editing text in blocks is made without using libraries on pure React.
 To display on the page and the ability to persist storage, all images are encoded.
-In [Base64] (https://ru.wikipedia.org/wiki/base64).
+In [Base64](https://ru.wikipedia.org/wiki/base64).
 
 ## <a name="tools"></a>Список использованных технологий и инструментов
 

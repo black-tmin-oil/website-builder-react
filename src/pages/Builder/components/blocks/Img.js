@@ -1,54 +1,108 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { saveBlockState } from '../../../../store/builderSlice'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import DeleteButton from './DeleteButton'
 
-export default function Img (props) {
-    const dispatch = useDispatch()
-    const [attributes, setAttributes] = useState({
-      fileBase64: null,
-      isError: false
-    });
+import React from "react";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardContent from "@material-ui/core/CardContent";
+import Fab from "@material-ui/core/Fab";
+import Grid from "@material-ui/core/Grid";
+import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
 
+import { useStyles } from './../../../../styles'
+export default function Img(props) {
+    const {id} = props
+    const classes = useStyles();
+  
+    const blocks = useSelector(state => state.builder.current.blocks)
+
+    const dispatch = useDispatch()
+    const [attributes, setAttributes] = useState([{
+      fileBase64: null
+    }]);
+
+    useEffect(() => {
+      const blockDataInStore = blocks.find(e => e.id === props.id)
+      if (blockDataInStore.attributes) {
+        setAttributes(blockDataInStore.attributes)
+      }
+    })
 
     async function fileHandler(input) {
         const toBase64 = file => new Promise((resolve, reject) => {
             const reader = new FileReader()
             reader.readAsDataURL(file.target.files[0])
             reader.onload = () => resolve(reader.result)
-            reader.onerror = error => reject(error)
-        })
+            reader.onerror = error => reject(error)})
 
         const result = await toBase64(input).catch(e => Error(e))
-
+        
         if (result instanceof Error) {
-          setAttributes(attributes.isError = true)
+          setAttributes({...attributes, isError: true})
+          
+          
 
         } else {
-          setAttributes(attributes.fileBase64 = result)
+          setAttributes(attributes[0].fileBase64 = result) 
         }
-        dispatch(saveBlockState({id: props.id, attributes: attributes}))
-    };
+        dispatch(saveBlockState({id: props.id, attributes: attributes})) 
+      }
+    
 
+    const renderInitialState = () => {
+      return (
+        <React.Fragment>
+          <CardContent>
+            <Grid container justify="center" alignItems="center">
+              <input
+                accept="image/*"
+                className={classes.input}
+                id="contained-button-file"
+                multiple
+                type="file"
+                onChange={fileHandler}
+              />
+              <label htmlFor="contained-button-file">
+                <Fab component="span" className={classes.button}>
+                  <AddPhotoAlternateIcon />
+                </Fab>
+              </label>
+              
+            </Grid>
+            <div className="imgBoxDescription">
+              <p>Click to select an image on the computer.</p>
+              <p> Accepted formats: <strong>JPEG/JPG, PNG.</strong></p>
+            </div>
+          </CardContent>
+        </React.Fragment>
+      );
+    }
+
+    const renderUploadedState = () => {
+      return (
+        <React.Fragment>
+          <CardActionArea>
+            <img
+              width="100%"
+              className={classes.media}
+              src={attributes[0].fileBase64}
+            />
+          </CardActionArea>
+          
+
+        </React.Fragment>
+      );
+    }
     return (
-      <>
-        <div className = "block-container">
-            <input type="file" onChange={fileHandler}></input>
-            {!attributes.isError ? <img src={attributes}/> : <p>При обработке изображения возникла ошибка</p>}
-            <DeleteButton id={props.id}/>
+      <React.Fragment>
+        <div className={classes.root}>
+            {attributes[0].fileBase64 == null ? renderInitialState() : renderUploadedState()}
         </div>
-      </>
+        <DeleteButton id={id}/>
+      </React.Fragment>
     );
-  }
+}
 
-//   const [state, setState] = useState({ name: "Michael" })
-// const isFirstRender = useRef(true)
-// useEffect(() => {
-//   if (isFirstRender.current) {
-//     isFirstRender.current = false // toggle flag after first render/mounting
-//     return;
-//   }
-//   console.log(state) // do something after state has updated
-// }, [state])
 
 

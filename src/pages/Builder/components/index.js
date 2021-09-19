@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 //material ui
 import { useStyles } from '../../../styles'
@@ -7,7 +7,6 @@ import Container from '@material-ui/core/Container';
 import {Grid, Checkbox} from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 
-import { borders } from '@material-ui/system';
 //this project components
 import BlocksMenu from './BlocksMenu';
 import Text from './blocks/Text'
@@ -22,17 +21,14 @@ import desktop from './../../../assets/desktop.gif'
 export default function Builder() {
   const classes = useStyles();
   const blocks = useSelector(state => state.builder.current.blocks)
-//---------------------
-  const[mobileStub, setMobileStub] = useState(0)
 
+  const[mobileStub, setMobileStub] = useState(0)
   const checkWindowWidth = () => {
     setMobileStub(!window.matchMedia('(min-width: 960px)').matches)
   }
-
   useEffect(() => {
     window.addEventListener('resize', checkWindowWidth)
   })
-//-----------------------------
 
   //dinamicly render component
   const components = {
@@ -51,13 +47,17 @@ export default function Builder() {
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={8} lg={10}>
                     {blocks.length ? 
                     blocks.map(b => {
                   const Component = components[b.type];
-                  return <div key={b.id} style={{backgroundColor: "red"}}><Component name={b.name} id={b.id}/></div>;
+                  return <Box  key={b.id} justifyContent="center" display="flex" sx={{ border: '1px dashed grey'}}><Component name={b.name} id={b.id}/></Box>
                 }) : 
-                <div><img src={start} alt="start"></img><h2>start adding blocks</h2></div>}
+                <Box justifyContent="center" display="flex" >
+                  <img src={start} alt="start"></img>
+                  {/* <h2>start adding blocks</h2> */}
+                </Box>
+                }
             </Grid>
           </Grid>
         </Container>
@@ -66,6 +66,8 @@ export default function Builder() {
     
   );
 }
+
+
 
 
 
