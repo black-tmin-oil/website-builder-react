@@ -3,8 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveBlockState} from '../../../../store/builderSlice'
 import DeleteButton from './DeleteButton'
 
-import EditableLabel from 'react-inline-editing';
-
 import Grid from '@material-ui/core/Grid';
 
 export default function Header (props) {
