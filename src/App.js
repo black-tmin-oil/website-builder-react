@@ -8,7 +8,7 @@ function App () {
   return (
     <>
       <TopBar />
-      <BrowserRouter basename='/website-builder-react'>
+      <BrowserRouter>
         <Switch>
           <Route exact path="/">
             <Redirect to="/home" />
