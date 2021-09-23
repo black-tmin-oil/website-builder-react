@@ -1,10 +1,9 @@
+
 language: node_js
 node_js:
   - "node"
-
-cache: 
-  yarn: true
-script: yarn build
+cache: npm
+script: npm build
 deploy:
   provider: pages
   cleanup: true

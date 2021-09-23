@@ -42,22 +42,7 @@ export default function Header (props) {
         justifyContent="space-evenly"
         alignItems="center"
       >
-      <div>
-        {/* <EditableLabel text={ attributes.value || attributes[0].default} */}
-        <EditableLabel text={ attributes.value || 'fuck'}
-            labelFontWeight='bold'
-            labelFontSize="20px"
-            inputMaxLength="50"
-            // onFocus={saveToStore}
-            onFocusOut={saveToStore}
-            // onFocusOut={() => dispatch(saveBlockState({id: id, attributes: attributes}))}
-        />
-      </div>
-      {/* <div>
-        <EditableLabel text='Subtitle'
-            onFocusOut={saveToStore}
-        />
-      </div> */}
+      
       </Grid>
       <DeleteButton id={id}/>
       </>
