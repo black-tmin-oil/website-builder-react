@@ -1,16 +1,16 @@
+import React from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { saveBlockState } from '../../../../store/builderSlice'
 import {useState, useEffect} from 'react'
 import DeleteButton from './DeleteButton'
-
-import React from "react";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import Fab from "@material-ui/core/Fab";
-import Grid from "@material-ui/core/Grid";
+import {
+  Grid, 
+  Fab, 
+  CardActionArea, 
+  CardContent} from "@material-ui/core";
 import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
+import { useStyles } from '../../../../styles'
 
-import { useStyles } from './../../../../styles'
 export default function Img(props) {
     const {id} = props
     const classes = useStyles();
@@ -39,9 +39,8 @@ export default function Img(props) {
         const result = await toBase64(input).catch(e => Error(e))
         
         if (result instanceof Error) {
-          setAttributes({...attributes, isError: true})
-          
-          
+          // setAttributes({...attributes, isError: true})
+          console.log('error happend during file upload') 
 
         } else {
           setAttributes(attributes[0].fileBase64 = result) 

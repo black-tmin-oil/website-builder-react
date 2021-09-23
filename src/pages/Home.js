@@ -1,18 +1,20 @@
 import {React, useState} from 'react';
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux'
-
 import moment from 'moment'
-import { createNewSite, openHistoryProject, deleteHistoryProject } from './../store/builderSlice'
-import {useStyles} from './../styles'
+import { 
+  createNewSite, 
+  openHistoryProject, 
+  deleteHistoryProject } from './../store/builderSlice'
+
+//material ui imports
+import {useStyles} from '../styles'
 import AddIcon from '@material-ui/icons/Add';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import clsx from 'clsx';
 import {
   Container, 
   Button, 
-  Link, 
-  Typography, 
   Grid, 
   Paper,
   Divider} from '@material-ui/core';
@@ -33,7 +35,7 @@ export default function Home() {
   
 
   const createSite = () => {
-    //async router.push in redux action but i use redux toolkit so i need aside library for doing that
+    //it's better make redirect in redux after action dispatching
     redirectToBuilder.push("/builder");
     dispatch(createNewSite(siteName))
   }
@@ -47,19 +49,6 @@ export default function Home() {
     dispatch(deleteHistoryProject(id))
   }
 
-  
-  function Copyright(props) {
-    return (
-      <Typography variant="body2" color="text.secondary" align="center" {...props}>
-        {'Copyright © '}
-        <Link color="inherit" href="https://github.com/anna-vodimed">
-          A.Vodimed
-        </Link>{' '}
-        {new Date().getFullYear()}
-        {'.'}
-      </Typography>
-    );
-  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -70,9 +59,9 @@ export default function Home() {
           <Grid container spacing={3}>
             
             <Grid item xs={12} md={4} lg={3}>
-            <h2>Start site</h2>
+            <h2>Create site!</h2>
               <Paper className={fixedHeightPaper}>
-                <p>Enter ur site name</p>
+                <p>Enter your site name</p>
                 <input onChange={e => setSiteName(e.target.value)}></input>
                 <Button
                   variant="contained"
@@ -88,8 +77,7 @@ export default function Home() {
               </Paper>
             </Grid>
 
-            {/* поместить в отдельный грид для блоков хистори */}
-            <Grid item xs={12} md={4} lg={3} justify = "center">
+            <Grid item xs={12} md={4} lg={3}>
               <h2>History</h2>
               {history.length ? history.map(site => (
                 <Paper className={fixedHeightPaper} key={site.id}>
@@ -118,12 +106,11 @@ export default function Home() {
                 </Paper>
               )) : <div className="empty-history">
                 <img src={empty} alt="img-empty"></img>
-                <h3>there is no saved sites</h3>
                 </div>
               }
             </Grid>
           </Grid>
-          <Copyright sx={{ pt: 4 }}/>
+          
         </Container>
       </main>
     </div>

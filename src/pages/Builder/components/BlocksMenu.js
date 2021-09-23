@@ -2,7 +2,7 @@ import {React, useState} from 'react'
 import { useDispatch } from 'react-redux'
 import { saveBlock, saveProject } from '../../../store/builderSlice'
 
-import { useStyles } from './../../../styles'
+import { useStyles } from '../../../styles'
 import {
   Drawer, 
   Divider, 
@@ -13,9 +13,8 @@ import {
   Toolbar,
   Button }from '@material-ui/core';
 
-import MailIcon from '@material-ui/icons/Mail';
+
 import SaveIcon from '@material-ui/icons/Save';
-import GitHubIcon from '@material-ui/icons/GitHub';
 
 import ImageIcon from '@material-ui/icons/Image';
 import TextFieldsIcon from '@material-ui/icons/TextFields';
@@ -25,7 +24,7 @@ export default function BlocksMenu () {
   const classes = useStyles()
   const dispatch = useDispatch()
   
-  const saveProj = () => {
+  const saveSite = () => {
     dispatch(saveProject())
   }
 
@@ -47,25 +46,25 @@ export default function BlocksMenu () {
       name: 'Image'
     }])
 
-  const addUniqueId = (b) => {
+  const addUniqueId = (block) => {
     setListAvailableBlocks(listAvailableBlocks.map(e => {
       e.id = Math.random().toString(36).substring(7)
       return Object.assign({}, e)
     }))
-    dispatch(saveBlock(b))
+    dispatch(saveBlock(block))
   }
 
 
   const blocks = (
     <div>
-      <Toolbar><GitHubIcon /><p>v. 0.0.1</p></Toolbar>
+      <Toolbar></Toolbar>
       <Divider />
       <div className={classes.drawerContainer} />
       <List>
-        {listAvailableBlocks.map((b) => (
-          <ListItem button key={b.type}>
-            <ListItemIcon><ImageIcon /></ListItemIcon>
-            <ListItemText primary={b.name} onClick={()=> addUniqueId(b)}/>
+        {listAvailableBlocks.map((block) => (
+          <ListItem button key={block.type}>
+            <ListItemIcon><TextFieldsIcon /></ListItemIcon>
+            <ListItemText primary={block.name} onClick={()=> addUniqueId(block)}/>
           </ListItem>
         ))}
       </List>
@@ -92,7 +91,7 @@ export default function BlocksMenu () {
             size="large"
             className={classes.button}
             startIcon={<SaveIcon />}
-            onClick={saveProj}
+            onClick={saveSite}
           >
             Save Project
           </Button>

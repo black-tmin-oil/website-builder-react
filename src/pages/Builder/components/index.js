@@ -19,10 +19,11 @@ import desktop from './../../../assets/desktop.gif'
 
 
 export default function Builder() {
+  const[mobileStub, setMobileStub] = useState(0)
   const classes = useStyles();
   const blocks = useSelector(state => state.builder.current.blocks)
 
-  const[mobileStub, setMobileStub] = useState(0)
+  
   const checkWindowWidth = () => {
     setMobileStub(!window.matchMedia('(min-width: 960px)').matches)
   }
@@ -37,7 +38,10 @@ export default function Builder() {
     header: Header
   };
 
-  return ( mobileStub ? <div><h1>cant be used on mobile</h1><h1>cant be used on mobile</h1><img src={desktop} alt="desktop"></img></div> :
+  return ( mobileStub ? <div>
+    <img src={desktop} alt="desktop"></img>
+    <p style={{textAlign: 'center'}}>cant be used on mobile</p>
+    </div> :
 
     <div className={classes.root}>
       <CssBaseline />
@@ -49,13 +53,12 @@ export default function Builder() {
           <Grid container spacing={3}>
             <Grid item xs={12} md={8} lg={10}>
                     {blocks.length ? 
-                    blocks.map(b => {
-                  const Component = components[b.type];
-                  return <Box  key={b.id} justifyContent="center" display="flex" sx={{ border: '1px dashed grey'}}><Component name={b.name} id={b.id}/></Box>
+                    blocks.map(block => {
+                  const Component = components[block.type];
+                  return <Box  key={block.id} justifyContent="center" display="flex" sx={{ border: '1px dashed grey'}}><Component name={block.name} id={block.id}/></Box>
                 }) : 
                 <Box justifyContent="center" display="flex" >
                   <img src={start} alt="start"></img>
-                  {/* <h2>start adding blocks</h2> */}
                 </Box>
                 }
             </Grid>

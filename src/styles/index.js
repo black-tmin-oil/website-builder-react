@@ -1,6 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import pink from "@material-ui/core/colors/pink";
-import blue from "@material-ui/core/colors/blue";
 
 const drawerWidth = 240;
 
@@ -79,12 +77,7 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     margin: theme.spacing.unit * 2
   },
-  // iconHover: {
-  //   margin: theme.spacing.unit * 2,
-  //   "&:hover": {
-  //     color: red[800]
-  //   }
-  // },
+  
   cardHeader: {
     textalign: "center",
     align: "center",

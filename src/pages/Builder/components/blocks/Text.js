@@ -1,31 +1,46 @@
-import { useState, useRef, useEffect } from "react"
-import { useDispatch } from 'react-redux'
+import { useState, useEffect } from "react"
+import { useDispatch, useSelector } from 'react-redux'
 import { saveBlockState} from '../../../../store/builderSlice'
 import DeleteButton from './DeleteButton'
-import EditableLabel from 'react-inline-editing';
 
 import Grid from '@material-ui/core/Grid';
+
+
+
 export default function Text(props) {
     
     const dispatch = useDispatch()
     const {id} = props
+    const [editing, setEditing] = useState(false)
     const [attributes, setAttributes] = useState([{
         field: 'text',
-        value: '',
-        default: 'Введите сюда свой текст',
+        value: null,
+        default: 'Start typing here',
     }])
 
-    function saveToStore(data) {
+    const blocks = useSelector(state => state.builder.current.blocks)
+
+    useEffect(() => {
+        const blockDataInStore = blocks.find(e => e.id === props.id)
+        if (blockDataInStore.attributes) {
+            setAttributes(prevState => ({
+                ...prevState,          
+                [0]:              
+                blockDataInStore.attributes  
+            }));
+        }
+    }, [])
+
+    const saveonChange = (data) => {
         setAttributes(prevState => ({
-            ...prevState,           // copy all other field/objects
-            [0]: {              // recreate the object that contains the field to update
-              ...prevState[0], // copy all the fields of the object
-              value: data    // overwrite the value of the field to update
+            ...prevState,          
+            [0]: {             
+              ...prevState[0],
+              value: data.target.value
             }
         }));
         dispatch(saveBlockState({id: id, attributes: attributes[0]}))
     }
-    
 
     return (
         <>
@@ -36,12 +51,23 @@ export default function Text(props) {
             alignItems="center"
         >
         <div>
-            <EditableLabel text='Text'
-                labelFontWeight='bold'
-                // labelFontSize="20px"
-                inputMaxLength="200"
-                onFocusOut={saveToStore}
-            />
+            <p>
+                {!editing ? 
+                <span 
+                onClick={() => setEditing(true)}
+                >
+                 {attributes[0].value || attributes[0].default}
+                </span> : 
+                
+                <textarea 
+                onChange={(e) => saveonChange(e)} 
+                onBlur={() => setEditing(false)}>
+
+                </textarea>
+                }
+                
+            </p>
+           
         </div>
         </Grid>
         <DeleteButton id={id}/>

@@ -1,14 +1,3 @@
-ТОDO :
-2 вида юзеров:
-   анонимный 
-      сохраниение проектов в локал сторедж
-   зареганный
-      сохранение проектов в фаербэйс облоко
-      личный кабинет
-нужно будет заморочитсься с асинхронными запросами из стора 
-в облако что даст тебе крутую практику
-
-
 # React.js Website Builder
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
@@ -18,8 +7,6 @@ The application is created using [React.js](https://vuejs.org/)
 and is the simplest site constructor, with conceptions of
 [SPA](https://wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0)
 and [PWA](https://web.dev/progressive-web-appsis/) applications. 
-
-:tada: [Demo](https://github.io/website-builder-react/)
 
 ## <a name="architecture"></a>General principles of the application work
 
@@ -62,9 +49,8 @@ In [Base64](https://ru.wikipedia.org/wiki/base64).
 - [Redux Toolkit](https://Reactx.Reactjs.org/) +
 [redux-persist](https://github.com/robinvdvleuten/Reactx-persistedstate) +
 - [Materila UI](https://pugjs.org/api/getting-started.html)
-- Graphic [StorySet.com](https://storyset.com/web)
+- Images [StorySet.com](https://storyset.com/web)
 - [Github Pages](https://pages.github.com/)
-- [Travis CI](https://travis-ci.org/)
 
 ## <a name="dev"></a>Локальный запуск проекта
 
@@ -77,11 +63,8 @@ In [Base64](https://ru.wikipedia.org/wiki/base64).
 2. **Установка зависимостей**
 
     ```
-    npm ci
+    yarn add
     ```
-
-    Использование `npm ci` вместо `npm i` позволит гарантировать корректные версии устанавливаемых `npm` пакетов,
-    так как они будут взяты из `package-lock.json`.  
 
 3. **Запуск сервера для разработки**
 
@@ -91,35 +74,7 @@ In [Base64](https://ru.wikipedia.org/wiki/base64).
     Для его запуска выполните из корневой директории проекта:
 
     ```
-    npm run serve
+    yarn start
    ```
 
     После этого приложение будет доступно по адресу `localhost:8080`.
-
-    Во время разработки изменения в файлах будут отслеживаться автоматически,
-    при этом будет вызываться линтер и сервер будет перезапускаться.
-
-    Также доступны следующие команды:
-
-    ```
-    npm run build // сборка приложения Vue для развёртывания на production
-    npm run lint // ручной запуск линтера
-    ```
-
-## <a name="deploy"></a>Деплой на Github Pages
-
-Для публикации приложения на [Github Pages](https://pages.github.com/)
-с помощью [Travis CI](https://travis-ci.org/), требуется:
-1. Зарегистрировать аккаунт на [Travis CI](https://travis-ci.org/) и добавить в него проект Github.
-2. Получить персональный токен доступ на Github ([инструкция](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)) 
-и добавить в Travis переменную окружения $GITHUB_TOKEN.
-3. Создать в корне проекта файл с описанием опций публикации с названием `.travis.yml`.
-Описание опций можно найти [здесь](https://docs.travis-ci.com/user/deployment/pages/).
-4. Для корректного роутинга SPA на [Github Pages](https://pages.github.com/)
-требуется выполнить инструкции из [репозитория](https://github.com/rafgraph/spa-github-pages).
-
-После этого, при каждом коммите в отслеживаемую ветку
-(указывается в `.travis.yml`) при условии успешного прохождения CI
-(эта стадия может отсутствовать, как, например, в этом проекте)
-проект будет автоматически опубликован на [Github Pages](https://pages.github.com/)
-и по умолчанию будет доступен по адресу `http(s)://<user>.github.io/<repository>`.
