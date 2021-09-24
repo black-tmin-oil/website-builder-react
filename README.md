@@ -36,7 +36,7 @@ in [Base64](https://en.wikipedia.org/wiki/base64).
 - [react-router-dom](https://reactrouter.com)
 - [Redux Toolkit](https://redux-toolkit.js.org/) +
 [redux-persist](https://github.com/rt2zz/redux-persist) +
-- [Materila UI](https://mui.com/)
+- [Material UI](https://mui.com/)
 - Images [StorySet.com](https://storyset.com/web)
 - [Github Pages](https://pages.github.com/)
 
