@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { saveBlock, saveProject } from '../../../store/builderSlice'
 
 import { useStyles } from '../../../styles'
+import SaveIcon from '@material-ui/icons/Save';
 import {
   Drawer, 
   Divider, 
@@ -14,21 +15,7 @@ import {
   Button }from '@material-ui/core';
 
 
-import SaveIcon from '@material-ui/icons/Save';
-
-import ImageIcon from '@material-ui/icons/Image';
-import TextFieldsIcon from '@material-ui/icons/TextFields';
-// import SegmentIcon from '@material-ui/icons/Segment';
-
 export default function BlocksMenu () {
-  const classes = useStyles()
-  const dispatch = useDispatch()
-  
-  const saveSite = () => {
-    dispatch(saveProject())
-  }
-
-
   const [listAvailableBlocks, setListAvailableBlocks] = useState([
     {
       id: null,
@@ -44,7 +31,12 @@ export default function BlocksMenu () {
       id: null,
       type: 'img',
       name: 'Image'
-    }])
+  }])
+
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  
+  const saveSite = () => dispatch(saveProject())
 
   const addUniqueId = (block) => {
     setListAvailableBlocks(listAvailableBlocks.map(e => {
@@ -54,7 +46,6 @@ export default function BlocksMenu () {
     dispatch(saveBlock(block))
   }
 
-
   const blocks = (
     <div>
       <Toolbar></Toolbar>
@@ -63,7 +54,7 @@ export default function BlocksMenu () {
       <List>
         {listAvailableBlocks.map((block) => (
           <ListItem button key={block.type}>
-            <ListItemIcon><TextFieldsIcon /></ListItemIcon>
+            <ListItemIcon></ListItemIcon>
             <ListItemText primary={block.name} onClick={()=> addUniqueId(block)}/>
           </ListItem>
         ))}
