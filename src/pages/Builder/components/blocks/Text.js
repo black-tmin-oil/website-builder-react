@@ -40,7 +40,7 @@ export default function Text(props) {
         }));
     }
 
-    const dispatchToStore = () => dispatch(saveBlockState({id: id, attributes: attributes}))
+    const dispatchToStore = () => dispatch(saveBlockState({id: id, attributes: attributes[0]}))
 
     return (
         <>
