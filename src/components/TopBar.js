@@ -16,7 +16,7 @@ export default function TopBar () {
         <IconButton
           aria-haspopup="true"
           color="inherit"
-          href="https://github.com/anna-vodimed"
+          href="https://github.com/black-tmin-oil/website-builder-react"
         >
           <GitHubIcon />
         </IconButton>
