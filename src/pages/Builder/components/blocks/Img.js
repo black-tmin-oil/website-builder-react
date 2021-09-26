@@ -1,15 +1,15 @@
-import React from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { saveBlockState } from '../../../../store/builderSlice'
 import {useState, useEffect} from 'react'
 import DeleteButton from './DeleteButton'
+import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
+import { useStyles } from '../../../../styles'
 import {
   Grid, 
   Fab, 
   CardActionArea, 
   CardContent} from "@material-ui/core";
-import AddPhotoAlternateIcon from "@material-ui/icons/AddPhotoAlternate";
-import { useStyles } from '../../../../styles'
+
 
 export default function Img(props) {
     const {id} = props
@@ -51,7 +51,7 @@ export default function Img(props) {
 
     const renderInitialState = () => {
       return (
-        <React.Fragment>
+        
           <CardContent>
             <Grid container justify="center" alignItems="center">
               <input
@@ -74,13 +74,13 @@ export default function Img(props) {
               <p> Accepted formats: <strong>JPEG/JPG, PNG.</strong></p>
             </div>
           </CardContent>
-        </React.Fragment>
+        
       );
     }
 
     const renderUploadedState = () => {
       return (
-        <React.Fragment>
+        
           <CardActionArea>
             <img
               width="100%"
@@ -90,16 +90,16 @@ export default function Img(props) {
           </CardActionArea>
           
 
-        </React.Fragment>
+        
       );
     }
     return (
-      <React.Fragment>
+      <>
         <div className={classes.root}>
             {attributes[0].fileBase64 == null ? renderInitialState() : renderUploadedState()}
         </div>
         <DeleteButton id={id}/>
-      </React.Fragment>
+      </>
     );
 }
 

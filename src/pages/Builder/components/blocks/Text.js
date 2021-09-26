@@ -5,17 +5,16 @@ import DeleteButton from './DeleteButton'
 
 import Grid from '@material-ui/core/Grid';
 
-
+import ToggleEdit from './InlineEditor'
 
 export default function Text(props) {
     
     const dispatch = useDispatch()
     const {id} = props
-    const [editing, setEditing] = useState(false)
     const [attributes, setAttributes] = useState([{
         field: 'text',
         value: null,
-        default: 'Start typing here',
+        default: 'start typing here',
     }])
 
     const blocks = useSelector(state => state.builder.current.blocks)
@@ -31,7 +30,7 @@ export default function Text(props) {
         }
     }, [])
 
-    const saveonChange = (data) => {
+    const handleInput = (data) => {
         setAttributes(prevState => ({
             ...prevState,          
             [0]: {             
@@ -39,8 +38,9 @@ export default function Text(props) {
               value: data.target.value
             }
         }));
-        dispatch(saveBlockState({id: id, attributes: attributes[0]}))
     }
+
+    const dispatchToStore = () => dispatch(saveBlockState({id: id, attributes: attributes}))
 
     return (
         <>
@@ -50,25 +50,12 @@ export default function Text(props) {
             justifyContent="space-evenly"
             alignItems="center"
         >
-        <div>
-            <p>
-                {!editing ? 
-                <span 
-                onClick={() => setEditing(true)}
-                >
-                 {attributes[0].value || attributes[0].default}
-                </span> : 
-                
-                <textarea 
-                onChange={(e) => saveonChange(e)} 
-                onBlur={() => setEditing(false)}>
+        <ToggleEdit
+          value={attributes[0]} 
+          onChange={handleInput}
+          onBlur={dispatchToStore}
+        />
 
-                </textarea>
-                }
-                
-            </p>
-           
-        </div>
         </Grid>
         <DeleteButton id={id}/>
         </>

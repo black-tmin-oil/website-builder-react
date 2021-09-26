@@ -3,37 +3,61 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveBlockState} from '../../../../store/builderSlice'
 import DeleteButton from './DeleteButton'
 
+import ToggleEdit from './InlineEditor'
+
 import Grid from '@material-ui/core/Grid';
 
 export default function Header (props) {
-  const dispatch = useDispatch()
-  const {id} = props
-  const [attributes, setAttributes] = useState(
+  const [attributes, setAttributes] = useState([
     {
       field: 'title',
-      value: '',
+      value: null,
       default: 'Title',
-    })
-
-  // const blocks = useSelector(state => state.builder.current.blocks)
-
-  // useEffect(() => {
-  //   const blockDataInStore = blocks.find(e => e.id === props.id)
-  //   if (blockDataInStore.attributes) {
-  //     setAttributes(blockDataInStore.attributes)
-  //     console.log("state after useEffect heppend", attributes)
-  //   }
-  // }, [attributes])
-   
-  const saveToStore = (data) => {
-      setAttributes(attributes => ({
-        ...attributes,
-        value: data
-      }));
-      setAttributes(data)
-
-      console.log('savetostore', attributes)
+      edit: false
+    },
+    {
+      field: 'subtitle',
+      value: null,
+      default: 'Subtitle',
     }
+  ])
+  const dispatch = useDispatch()
+  const {id} = props
+
+
+  const blocks = useSelector(state => state.builder.current.blocks)
+
+    useEffect(() => {
+        const blockDataInStore = blocks.find(e => e.id === props.id)
+        
+        if (blockDataInStore.attributes) {
+          setAttributes([...attributes].map((object, index) => {
+            if(object.field === blockDataInStore.attributes[index].field) {
+              return {
+                ...object,
+                value: blockDataInStore.attributes[index].value
+              }
+            }
+          }))
+        }
+    }, [])
+
+  const handleInput = (e, a) => {
+    setAttributes([...attributes].map(object => {
+      if(object.field === a.field) {
+        return {
+          ...object,
+          value: e.target.value
+        }
+      }
+      else return object;
+    }))
+    dispatch(saveBlockState({id: id, attributes: attributes}))
+
+  }
+
+  const dispatchToStore = () => dispatch(saveBlockState({id: id, attributes: attributes}))
+
     return (
       <>
       <Grid
@@ -42,7 +66,13 @@ export default function Header (props) {
         justifyContent="space-evenly"
         alignItems="center"
       >
-      
+        {attributes.map((attribute) => (
+        <ToggleEdit
+          value={attribute}
+          onChange={(e) => handleInput(e, attribute)}
+          onBlur={dispatchToStore}
+        />
+      ))}
       </Grid>
       <DeleteButton id={id}/>
       </>

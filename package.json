@@ -1,6 +1,8 @@
 {
-  "name": "build",
+  "name": "website-builder",
   "version": "0.1.0",
+  "author": "BlackTminOil",
+  "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",

@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { useStyles } from '../../../styles'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import {Grid, Checkbox} from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 
 //this project components
